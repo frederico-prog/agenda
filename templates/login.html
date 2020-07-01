@@ -1,26 +1,40 @@
+{% load static %}
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agenda</title>
+    <link rel="shortcut icon" href="https://i.imgur.com/Z2cjlQw.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://docs.google.com/uc?id=1ZJgkMU4Vnu2xbig0KvnwgDJrhZRFcTBE">
 </head>
 <body>
-    <h1 align="center">Login</h1>
-
-    <form action="submit" method="POST">{% csrf_token %}
-        <div align="center">
-            <label>Usuário</label>
-            <input type="text" name="username">
-            <label>Senha</label>
-            <input type="password" name="password">
-            <button type="submit">Entrar</button>
-        </div>
-    </form>
-
-    {% for message in messages %}
-        <div align="center">
-            <strong>Erro! </strong>{{ message }}
-        </div>
-    {% endfor %}
+    <div class="container-login">
+        <form action="submit" method="POST">{% csrf_token %}
+            <div class="logo">
+                <img src="https://docs.google.com/uc?id=1fYrgLMgMNaZGGEN3DtZWSPklbD_PGRhC" alt="agenda" width="100">
+            </div>
+            <div class="input-field">
+                <i class="material-icons prefix">account_circle</i>
+                <input type="text" name="username" id="username" class="validate">
+                <label for="username">Usuário</label>
+            </div>
+            <div class="input-field">
+                <i class="material-icons prefix">lock</i>
+                <input type="password" name="password" id="password" class="validate">
+                <label for="senha">Senha</label>
+            </div>
+            <button type="submit" class="btn waves-effect waves-light">Entrar</button>
+            {% for message in messages %}
+                <div class="error">
+                    <p>{{ message }}</p>
+                </div>
+            {% endfor %}
+        </form>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 </html>
